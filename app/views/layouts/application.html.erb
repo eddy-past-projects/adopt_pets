@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AdoptPet</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application', 'users' %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Zilla+Slab&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <title>Adopt a Pet</title>
+  </head>
+
+  <body>
+
+    <div id="navbar">
+      <ul>
+        <li><%= link_to 'home', root_path %></li>
+        <li><%= link_to 'log in', login_path %></li>
+        <li><%= link_to 'sign up', new_user_path %></li>
+        <li><%= link_to 'log out', logout_path %></li>
+      </ul>
+    </div>
+
+      <div id="container">
+
+
+
+
+
+
+
+          <%= yield %>
+
+
+      </div>
+
+  </body>
+</html>
