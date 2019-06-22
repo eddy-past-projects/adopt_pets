@@ -10,57 +10,55 @@ let petsContainer = document.getElementById('pet-container')
 let petUserId
 
 
-  function getPets() {
-    fetch(`/pets.json`)
-      .then(resp => resp.json())
-      .then(pets => {
-        $('#pets-container').html('')
-        pets.forEach(pet => {
-          let newPet = new Pet(pet)
-          let petHtml = newPet.formatIndex()
-          $('#pets-container').append(petHtml)
-        })
-      })
-  }
-
-  $('#pets-container').on('click', function(e) {
-    e.preventDefault()
-    let petId = e.target.dataset.id
-    let petShow = e.target.dataset.action === 'show-pet'
-    let getToys = e.target.dataset.action === 'get-toys'
-    if (petShow) {
-      getSinglePet(petId)
-    } else if (getToys) {
-      getPetToys(petId)
-    }
-  })
-
-
-
-function getSinglePet(petId) {
-  fetch(`/pets/${petId}.json`)
+function getPets() {
+  fetch(`/pets.json`)
     .then(resp => resp.json())
-    .then(pet => {
-      console.log(pet)
+    .then(pets => {
       $('#pets-container').html('')
-      let singlePet = new Pet(pet)
-      let singlePetHtml = singlePet.formatShow()
-      $('#pets-container').append(singlePetHtml)
+      pets.forEach(pet => {
+        let newPet = new Pet(pet)
+        let petHtml = newPet.formatIndex()
+        $('#pets-container').append(petHtml)
+      })
     })
 }
+
+function getSinglePet() {
+  $('#pets-container').on('click', function(e) {
+    e.preventDefault()
+
+    let petId = e.target.dataset.id
+    if (e.target.dataset.action === 'show-pet') {
+    fetch(`/pets/${petId}.json`)
+      .then(resp => resp.json())
+      .then(pet => {
+        $('#pets-container').html('')
+        let singlePet = new Pet(pet)
+        let singlePetHtml = singlePet.formatShow()
+        $('#pets-container').append(singlePetHtml)
+      })
+    } else if (e.target.dataset.action === 'get-toys'){
+      fetch(`/pets/${petId}.json`)
+        .then(resp => resp.json())
+        .then(petArray => {
+          console.log(petArray)
+        })
+    }
+
+  })
+}
+
+// function getPetToys(){
+//   $('.pet-card').on('click', function(e){
+//     console.log(e.target.dataset.action === 'get-toys')
+//
+//   })
+//
+//
+// }
 // // .then(resp => resp.text())
 // // .then(text => {
 // //   console.log(text)
-
-// const jewelId = parseInt(e.target.dataset.id)
-//   if (e.target.dataset.action === 'like') {
-//     //since using a helper function need to carry over the e.target(btn)
-//     likeJewel(jewelId, e.target)
-//
-//   } else if (e.target.dataset.action === 'buy') {
-//     buyJewel(jewelId)
-//   }
-// })
 
 class Pet {
   constructor(pet) {
@@ -79,7 +77,7 @@ Pet.prototype.formatIndex = function() {
   let petHtml = (`
     <div class='pet-card' data-id=${this.id} >
       <img src=${this.image} class='pet-image'>
-      <h3>name: <a href="${this.id}" data-id=${this.id} data-action="show-pet" class="show_link"> ${this.name}</a></h3>
+      <h3>name: <a href="${this.id}" data-id=${this.id} data-action='show-pet' class="show_link"> ${this.name}</a></h3>
       <h5>type of pet: ${this.kind}<br>
       needs to be fed: ${this.hungry}</h5>
     </div>
@@ -91,7 +89,7 @@ Pet.prototype.formatShow = function() {
     <div class='pet-card' data-id=${this.id} >
       <img src=${this.image} class='pet-image'>
       <h3>hi! my name is: ${this.name}</a></h3>
-      <button id='toys' data-id=${this.id} data-action="get-toys">see my toys!</button>
+      <button class='toys' data-id=${this.id} data-action="get-toys">see my toys!</button>
       <h5> i'm ${this.age} years old<br>
         my fur color is: ${this.color}<br>
         and my hair is: ${this.hair} </h5>
@@ -99,8 +97,6 @@ Pet.prototype.formatShow = function() {
     `)
   return singlePetHtml
 }
-
-
 
 
 // <div id="outer">
@@ -115,16 +111,16 @@ Pet.prototype.formatShow = function() {
 
 // needs to be fed: ${yesno(this.hungry)}</h5><br>
 
-//DONT DELETE/////
+ //DONT DELETE/////
 // petUserId = pet.user.id
 // // not right, only returns last user.id
 // console.log(petUserId)
 
-// fetch(`/users/${petUserId}.json`)
+ // fetch(`/users/${petUserId}.json`)
 //   .then(resp => resp.json())
 //   .then(userPets => {
-//     $('#pet-container').html('')
-//       console.log(userPets)
-//
-//
-//   })
+  //     $('#pet-container').html('')
+  //       console.log(userPets)
+  //
+  //
+  //   })

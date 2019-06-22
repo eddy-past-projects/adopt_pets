@@ -29,3 +29,17 @@ and my hair is:
 <%= button_to 'pet needs changin?', edit_pet_path, method: :get, class: 'button' %><br><br>
 
 <%= button_to 'pet went to heaven', pet_path, method: :delete, data: { confirm: 'are u sure?' }, class: 'button'%><br><br>
+
+
+$('#pets-container').on('click', function(e) {
+//     e.preventDefault()
+//     let petId = e.target.dataset.id
+//     let petShow = e.target.dataset.action === 'show-pet'
+//     let getToys = e.target.dataset.action === 'get-toys'
+//     if (e.target.dataset.action === 'show-pet') {
+//       getSinglePet(petId, e.target)
+//       console.log(petShow)
+//     } else if (getToys) {
+//       getPetToys(petId)
+//     }
+//   })
