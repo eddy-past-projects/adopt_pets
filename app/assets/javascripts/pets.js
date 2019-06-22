@@ -42,7 +42,7 @@ function getSinglePet() {
         .then(resp => resp.json())
         .then(petArray => {
           console.log(petArray)
-        
+
         })
     }
 
@@ -69,7 +69,7 @@ class Pet {
     this.age = pet.age
     this.color = pet.color
     this.hair = pet.hair
-    this.user = pet.user
+    // this.user = pet.user
     this.image = pet.image
     this.hungry = pet.hungry
     this.toys = pet.toys
