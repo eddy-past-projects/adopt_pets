@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rb-readline'
 
+# gem 'turbolinks', '~> 5'
 
 
 # Use ActiveStorage variant
@@ -36,6 +37,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

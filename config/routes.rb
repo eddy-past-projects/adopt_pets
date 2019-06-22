@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :pets
+  resources :toys
 
 
   patch '/toggle_hunger/:id', to: 'pets#pet_hungry', as: 'pet_hungry'

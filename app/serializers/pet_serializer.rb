@@ -3,5 +3,7 @@ class PetSerializer < ActiveModel::Serializer
 
   belongs_to :user
 
+  has_many :toys
+
 
 end

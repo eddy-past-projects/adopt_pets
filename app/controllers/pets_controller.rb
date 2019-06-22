@@ -22,6 +22,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    # @toy = @pet.toys.build
     # set_pet
     respond_to do |f|
       f.html {render :show}

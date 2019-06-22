@@ -8,14 +8,19 @@ body {
 
 h3 {
   font-size: 30pt;
-  line-height: 10%;
+  line-height: 0%;
   display: block;
+  margin: 1
+
 }
 h4 {
   font-size: 40pt
 }
 h5 {
-  font-size: 20pt
+  font-size: 20pt;
+  margin: 0
+
+  // line-height: 15%;
 }
 
 
@@ -45,9 +50,15 @@ h5 {
  #navbar ul li a.inuse {
    color: red;
   }
-  // #nav ul li a.inuse{/* in use css */}
+
+.toys {
+  width: 17.5rem;
+  justify-self: center;
+  background-color: rbga(255,255,255,50);
+  margin: 0
 
 
+}
 
 
 .container {

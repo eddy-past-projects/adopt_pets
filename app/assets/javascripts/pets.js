@@ -72,6 +72,7 @@ Pet.prototype.formatShow = function() {
     <div class='pet-card' data-id=${this.id} >
       <img src=${this.image} class='pet-image'>
       <h3>hi! my name is: ${this.name}</a></h3>
+      <button class='toys' data-id=${this.id} data-action="get-toys">see my toys!</button>
       <h5> i'm ${this.age} years old<br>
         my fur color is: ${this.color}<br>
         and my hair is: ${this.hair} </h5>
@@ -80,7 +81,6 @@ Pet.prototype.formatShow = function() {
     `)
   return singlePetHtml
 }
-
 
 
 // <div id="outer">
