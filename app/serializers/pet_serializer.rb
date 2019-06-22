@@ -4,4 +4,10 @@ class PetSerializer < ActiveModel::Serializer
   belongs_to :user
 
 
+  # def user_id
+  #   self.object.user.name
+  # end
+
+
+
 end

@@ -42,6 +42,7 @@ function getSinglePet() {
         .then(resp => resp.json())
         .then(petArray => {
           console.log(petArray)
+        
         })
     }
 
@@ -71,6 +72,7 @@ class Pet {
     this.user = pet.user
     this.image = pet.image
     this.hungry = pet.hungry
+    this.toys = pet.toys
   }
 }
 Pet.prototype.formatIndex = function() {
@@ -97,6 +99,9 @@ Pet.prototype.formatShow = function() {
     `)
   return singlePetHtml
 }
+
+
+
 
 
 // <div id="outer">

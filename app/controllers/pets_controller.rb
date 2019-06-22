@@ -24,7 +24,7 @@ class PetsController < ApplicationController
   def show
     @toy = @pet.toys.build
     respond_to do |f|
-      f.html 
+      f.html {render :show}
       f.json {render json: @pet}
     end
   end

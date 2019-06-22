@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :pets
 
+  has_many :toys
+
 
   validates :name, uniqueness: true
 
