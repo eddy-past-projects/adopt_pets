@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Pet.destroy_all
 User.destroy_all
+Toy.destroy_all
 
 User.create(name: 'cynthia', password: '123')
 User.create(name: 'lani', password: '123')
@@ -26,6 +27,25 @@ Pet.create(name: 'bea', kind: 'dog',age: 15, user_id: 4, color: 'brown, white, b
 Pet.create(name: 'mister', kind: 'cat',age: 2, user_id: 4, color: 'orange', hair:'long', image:'https://sendeyo.com/up/d2b0d451bd1621fe6869c808204bbabe.png')
 Pet.create(name: 'mufasa', kind: 'cat',age: 2, user_id: 4, color: 'orange', hair:'long', image:'https://sendeyo.com/up/f38ad1b6407a1b945a0f5d5e109020c2.png')
 
+ Toy.create(name: 'ball', pet_id: 1)
+ Toy.create(name: 'cardboard box', pet_id: 2)
+ Toy.create(name: 'stick', pet_id: 3)
+ Toy.create(name: 'slipper', pet_id: 4)
+ Toy.create(name: 'rope', pet_id: 5)
+ Toy.create(name: 'squeaky toy', pet_id: 6)
+ Toy.create(name: 'chew bone', pet_id: 7)
+ Toy.create(name: 'slipper', pet_id: 1)
+ Toy.create(name: 'string', pet_id: 8)
+ Toy.create(name: 'tail', pet_id: 1)
+ Toy.create(name: 'cardboard box', pet_id: 8)
+ Toy.create(name: 'stick', pet_id: 3)
+ Toy.create(name: 'slipper', pet_id: 3)
+ Toy.create(name: 'rope', pet_id: 5)
+ Toy.create(name: 'squeaky toy', pet_id: 6)
+ Toy.create(name: 'chew bone', pet_id: 3)
+ Toy.create(name: 'slipper', pet_id: 6)
+ Toy.create(name: 'string', pet_id: 9)
+ Toy.create(name: 'tail', pet_id: 9)
 
 #
 #
