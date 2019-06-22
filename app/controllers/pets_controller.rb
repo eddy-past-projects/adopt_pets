@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   skip_before_action :authorized, only: [:new, :index, :create]
+  before_action :set_pet, only: [:show, :pet_hungry, :edit, :update, :destroys]
 
 
 
@@ -21,17 +22,14 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pet = Pet.find(params[:id])
-    # set_pet
+    @toy = @pet.toys.build
     respond_to do |f|
-      f.html {render :show}
+      f.html 
       f.json {render json: @pet}
     end
   end
 
   def pet_hungry
-    @pet = Pet.find(params[:id])
-    # set_pet
       @pet.toggle(:hungry)
       @pet.save
       respond_to do |f|
@@ -56,8 +54,6 @@ class PetsController < ApplicationController
   end
 
   def edit
-    @pet = Pet.find(params[:id])
-    # set_pet
     @users = User.all
     respond_to do |f|
       f.html {render :edit}
@@ -66,8 +62,6 @@ class PetsController < ApplicationController
   end
 
   def update
-    @pet = Pet.find(params[:id])
-    # set_pet
     @pet.update(pet_params)
     respond_to do |f|
       f.html {redirect_to pet_path(@pet)}
@@ -76,8 +70,6 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    @pet = Pet.find(params[:id])
-    # set_pet
     @pet.destroy
     respond_to do |f|
       f.html {redirect_to user_path(@pet.user)}
@@ -90,13 +82,14 @@ class PetsController < ApplicationController
 
   private
 
+  def set_pet
+    @pet = Pet.find(params[:id])
+  end
+
   def pet_params
     params.require(:pet).permit(:name, :kind, :age, :user_id, :color, :hair, :image)
   end
 
-  def set_pet
-    @pet = Pet.find(params[:id])
-  end
 
 
 
