@@ -1,0 +1,49 @@
+<h2>hi, <%=@user.name%>!</h2>
+
+<h3>your pets</h3>
+
+<div id="my-pets">
+  <ul>
+    <li></li>
+
+  </ul>
+
+
+
+
+
+<% @user.pets.each do |pet|%>
+
+name: <%= button_to pet.name, pet_path(pet), method: :get, class: 'button'%>
+type of pet: <%= pet.kind%><br>
+needs to be fed: <%= yesno(pet.hungry)%><br><br>
+<% end %>
+
+
+<%= button_to 'adopt a pet', new_pet_path, method: :get, class: 'button' %><br><br>
+
+<%= button_to 'sign out', logout_path,  method: :get, data: { confirm: 'are u sure?' }, class: 'button' %><br><br>
+</div>
+
+
+$('#new_user').on('submit', function(e) {
+  e.preventDefault()
+  console.log('hiya')
+  const values = $(this).serialize()
+  const name = document.querySelector('#user_name').value
+  const password = document.querySelector('#user_password').value
+  console.log(name, password)
+let dataObj = {name: name, password: password};
+console.log(dataObj)
+// fetch("http://localhost:3000/users", {
+fetch("/users.json", {
+
+method: 'POST',
+body: JSON.stringify(dataObj),
+headers:{
+  'Content-Type': 'application/json'
+}
+})
+  .then(res  => res.text())
+      .then(text  => console.log(text))
+    })

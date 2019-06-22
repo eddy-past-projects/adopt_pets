@@ -1,0 +1,23 @@
+<div id="pet-form">
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<%= form_for @pet do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br><br>
+<%= f.label :kind %>
+<%= f.text_field :kind %><br><br>
+<%= f.label :age %>
+<%= f.number_field :age %><br><br>
+<%= f.label :color %>
+<%= f.text_field :color %><br><br>
+<%= f.label :hair %>
+<%= f.text_field :hair %><br><br>
+<%= f.label :your_name %>
+<%= f.collection_select :user_id, @users, :id, :name %><br><br>
+<%= f.submit%>
+<% end %>
+
+</div>

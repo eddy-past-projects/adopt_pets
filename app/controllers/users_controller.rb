@@ -20,17 +20,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @pet = @user.pets.build
+    @pet = @user.pets
+    # @pet = @user.pets.build
     respond_to do |f|
       f.html {render :show}
       f.json {render json: @user}
     end
+    # render json: @user
   end
 
-  def pet_attribute
-    debugger
-    Self.object.pet.attribute
-  end
+  # def pet_attribute
+  #   Self.object.pet.attribute
+  # end
 
   def destroy
     @user.destroy

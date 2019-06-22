@@ -1,0 +1,31 @@
+<h3>pet the pet</h3>
+
+hi! my name is:
+<%= @pet.name %><br>
+i'm a:
+<%= @pet.kind %><br>
+i'm
+<%= @pet.age %>
+years old<br>
+my fur color is:
+<%= @pet.color %>
+and my hair is:
+<%= @pet.hair %><br><br>
+
+
+<% if @pet.hungry %>
+  i'm hungry!
+  <%= button_to 'please feed me', pet_hungry_path(@pet), method: :patch, class: 'button'%><br>
+  you just ate!<%= button_to 'time for play', user_path(@pet.user), method: :get, class: 'button' %><br><br>
+
+<% else %>
+  i'm stuffed.
+  <%= button_to 'i`m hungry again', pet_hungry_path(@pet), method: :patch, class: 'button'%><br><br>
+<% end %>
+<% if !@pet.hungry %>
+  <%= button_to 'time for a nap', user_path(@pet.user), method: :get, class: 'button' %><br><br>
+<% end %>
+
+<%= button_to 'pet needs changin?', edit_pet_path, method: :get, class: 'button' %><br><br>
+
+<%= button_to 'pet went to heaven', pet_path, method: :delete, data: { confirm: 'are u sure?' }, class: 'button'%><br><br>
