@@ -47,6 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
 //     .then(function(json) {
 //       console.log(json)
 //     })
+// function getPetToys(){
+//   $('#toys').on('click', function(e){
+//     console.log(e.target)
+//     console.log(e.target.dataset.action === 'get-toys')
+//     console.log('wow')
+//   })
+// }
 
 
 

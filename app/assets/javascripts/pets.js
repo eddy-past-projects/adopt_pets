@@ -10,39 +10,57 @@ let petsContainer = document.getElementById('pet-container')
 let petUserId
 
 
-function getPets() {
-  fetch(`/pets.json`)
-    .then(resp => resp.json())
-    .then(pets => {
-      $('#pets-container').html('')
-      pets.forEach(pet => {
-        let newPet = new Pet(pet)
-        let petHtml = newPet.formatIndex()
-        $('#pets-container').append(petHtml)
+  function getPets() {
+    fetch(`/pets.json`)
+      .then(resp => resp.json())
+      .then(pets => {
+        $('#pets-container').html('')
+        pets.forEach(pet => {
+          let newPet = new Pet(pet)
+          let petHtml = newPet.formatIndex()
+          $('#pets-container').append(petHtml)
+        })
       })
-    })
-}
+  }
 
-function getSinglePet() {
   $('#pets-container').on('click', function(e) {
     e.preventDefault()
     let petId = e.target.dataset.id
-
-
-    fetch(`/pets/${petId}.json`)
-      .then(resp => resp.json())
-      .then(pet => {
-        console.log(pet)
-        $('#pets-container').html('')
-        let singlePet = new Pet(pet)
-        let singlePetHtml = singlePet.formatShow()
-        $('#pets-container').append(singlePetHtml)
-      })
+    let petShow = e.target.dataset.action === 'show-pet'
+    let getToys = e.target.dataset.action === 'get-toys'
+    if (petShow) {
+      getSinglePet(petId)
+    } else if (getToys) {
+      getPetToys(petId)
+    }
   })
+
+
+
+function getSinglePet(petId) {
+  fetch(`/pets/${petId}.json`)
+    .then(resp => resp.json())
+    .then(pet => {
+      console.log(pet)
+      $('#pets-container').html('')
+      let singlePet = new Pet(pet)
+      let singlePetHtml = singlePet.formatShow()
+      $('#pets-container').append(singlePetHtml)
+    })
 }
 // // .then(resp => resp.text())
 // // .then(text => {
 // //   console.log(text)
+
+// const jewelId = parseInt(e.target.dataset.id)
+//   if (e.target.dataset.action === 'like') {
+//     //since using a helper function need to carry over the e.target(btn)
+//     likeJewel(jewelId, e.target)
+//
+//   } else if (e.target.dataset.action === 'buy') {
+//     buyJewel(jewelId)
+//   }
+// })
 
 class Pet {
   constructor(pet) {
@@ -61,7 +79,7 @@ Pet.prototype.formatIndex = function() {
   let petHtml = (`
     <div class='pet-card' data-id=${this.id} >
       <img src=${this.image} class='pet-image'>
-      <h3>name: <a href="${this.id}" data-id=${this.id} class="show_link"> ${this.name}</a></h3>
+      <h3>name: <a href="${this.id}" data-id=${this.id} data-action="show-pet" class="show_link"> ${this.name}</a></h3>
       <h5>type of pet: ${this.kind}<br>
       needs to be fed: ${this.hungry}</h5>
     </div>
@@ -97,16 +115,16 @@ Pet.prototype.formatShow = function() {
 
 // needs to be fed: ${yesno(this.hungry)}</h5><br>
 
- //DONT DELETE/////
+//DONT DELETE/////
 // petUserId = pet.user.id
 // // not right, only returns last user.id
 // console.log(petUserId)
 
- // fetch(`/users/${petUserId}.json`)
+// fetch(`/users/${petUserId}.json`)
 //   .then(resp => resp.json())
 //   .then(userPets => {
-  //     $('#pet-container').html('')
-  //       console.log(userPets)
-  //
-  //
-  //   })
+//     $('#pet-container').html('')
+//       console.log(userPets)
+//
+//
+//   })
