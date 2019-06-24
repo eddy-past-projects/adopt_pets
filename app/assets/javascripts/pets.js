@@ -43,31 +43,23 @@ function getSinglePet() {
         .then(resp => resp.json())
         .then(petArray => {
           // $('#pets-container').html('')
+          let p = 'these are my toys!'
+          $('h3').html('')
           $('.pet-type').html('')
-
+          $('h3').html(p)
           petArray.toys.forEach(toy => {
+            if(toy.name != null){
             let singleToy = new Toy(toy)
               let toyHtml = singleToy.formatShow()
               $('.pet-type').append(toyHtml)
-
+            }
           })
         })
     }
-
   })
 }
 
-// function getPetToys(){
-//   $('.pet-card').on('click', function(e){
-//     console.log(e.target.dataset.action === 'get-toys')
-//
-//   })
-//
-//
-// }
-// // .then(resp => resp.text())
-// // .then(text => {
-// //   console.log(text)
+
 
 class Pet {
   constructor(pet) {
@@ -98,8 +90,8 @@ Pet.prototype.formatShow = function() {
   let singlePetHtml = (`
     <div class='pet-card' data-id=${this.id} >
       <img src=${this.image} class='pet-image'>
-      <div class='pet-type' data-id=${this.id} data-action='pet-words'>
       <h3>hi! my name is: ${this.name}</a></h3>
+      <div class='pet-type' data-id=${this.id} data-action='pet-words'>
       <button class='toys' data-id=${this.id} data-action="get-toys">see my toys!</button>
       <h5> i'm ${this.age} years old<br>
         my fur color is: ${this.color}<br>
@@ -120,7 +112,6 @@ class Toy {
 
 Toy.prototype.formatShow = function(){
   let toyHtml = (`
-      <h3>these are my toys!</h3>
       <h5>${this.name}</h5>
     `)
     return toyHtml
@@ -141,17 +132,3 @@ Toy.prototype.formatShow = function(){
 
 
 // needs to be fed: ${yesno(this.hungry)}</h5><br>
-
- //DONT DELETE/////
-// petUserId = pet.user.id
-// // not right, only returns last user.id
-// console.log(petUserId)
-
- // fetch(`/users/${petUserId}.json`)
-//   .then(resp => resp.json())
-//   .then(userPets => {
-  //     $('#pet-container').html('')
-  //       console.log(userPets)
-  //
-  //
-  //   })
