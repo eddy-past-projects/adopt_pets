@@ -12,20 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // $('#new_user').on('submit', function(e) {
-    //   e.preventDefault()
-    //   const values = $(this).serialize()
-    //   const value = $(this).serializeArray()
-    //   console.log(value)
-    //
-    //
-    //
-    //   console.log(values)
-    //   $.post('/users', values).done(function(data){
-    //     console.log(data)
-    //   })
-    //
-    // })
+    $('#new_user').on('submit', function(e) {
+      e.preventDefault()
+      const values = $(this).serialize()
+
+      console.log(values)
+      $.post('/users', values).done(function(data){
+        console.log("data from api",data)
+      })
+
+    })
 
   // $('#new_user').on('submit', function(e) {
   //   e.preventDefault()

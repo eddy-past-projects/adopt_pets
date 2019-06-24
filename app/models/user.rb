@@ -6,8 +6,6 @@ class User < ApplicationRecord
   has_many :toys
 
 
-  validates :name, uniqueness: true
-
 
 
 

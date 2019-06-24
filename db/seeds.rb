@@ -16,7 +16,7 @@ User.create(name: 'ive', password: '123')
 
 
 
-Pet.create(name: 'lola', kind: 'cat',age: 13, user_id: 1, color: 'tortoiseshell grey', hair:'short', image:'assets/images/marko-blazevic-219788-unsplash.jpg')
+Pet.create(name: 'lola', kind: 'cat',age: 13, user_id: 1, color: 'tortoiseshell grey', hair:'short', image:'https://sendeyo.com/up/de3269470dea83881ffb9a611e7cab45.png')
 Pet.create(name: 'tookie', kind: 'cat',age: 13, user_id: 1, color: 'tortoiseshell', hair:'short', image:'https://sendeyo.com/up/75c75ff3d04f0b606da7f44e7af220db.png')
 Pet.create(name: 'zoey', kind: 'dog', age: 8, user_id: 1, color: 'white', hair:'medium', image:'https://sendeyo.com/up/0cee3baff176e1d87b1fe59258027745.png')
 Pet.create(name: 'simon', kind: 'dog',age: 12, user_id: 2, color: 'grey', hair:'wirey', image:'https://sendeyo.com/up/4334281c6b0fdf1dc55e7c7c64f2e334.png')

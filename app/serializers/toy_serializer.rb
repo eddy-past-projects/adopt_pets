@@ -1,4 +1,4 @@
-class ToysSerializer < ActiveModel::Serializer
+class ToySerializer < ActiveModel::Serializer
   attributes :id, :name, :pet_id
 
   belongs_to :pet

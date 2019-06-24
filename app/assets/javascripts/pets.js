@@ -28,6 +28,7 @@ function getSinglePet() {
     e.preventDefault()
 
     let petId = e.target.dataset.id
+
     if (e.target.dataset.action === 'show-pet') {
     fetch(`/pets/${petId}.json`)
       .then(resp => resp.json())

@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :index, :create]
-  before_action :set_pet, only: [:show, :pet_hungry, :edit, :update, :destroys]
+  skip_before_action :authorized, only: [:new, :index, :show, :create]
+  before_action :set_pet, only: [:show, :pet_hungry, :edit, :update, :destroy]
 
 
 
