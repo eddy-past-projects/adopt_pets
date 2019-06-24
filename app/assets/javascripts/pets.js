@@ -42,8 +42,15 @@ function getSinglePet() {
       fetch(`/pets/${petId}.json`)
         .then(resp => resp.json())
         .then(petArray => {
-          console.log(petArray)
+          // $('#pets-container').html('')
+          $('.pet-type').html('')
 
+          petArray.toys.forEach(toy => {
+            let singleToy = new Toy(toy)
+              let toyHtml = singleToy.formatShow()
+              $('.pet-type').append(toyHtml)
+
+          })
         })
     }
 
@@ -70,7 +77,7 @@ class Pet {
     this.age = pet.age
     this.color = pet.color
     this.hair = pet.hair
-    // this.user = pet.user
+    this.user_id = pet.user_id
     this.image = pet.image
     this.hungry = pet.hungry
     this.toys = pet.toys
@@ -91,14 +98,32 @@ Pet.prototype.formatShow = function() {
   let singlePetHtml = (`
     <div class='pet-card' data-id=${this.id} >
       <img src=${this.image} class='pet-image'>
+      <div class='pet-type' data-id=${this.id} data-action='pet-words'>
       <h3>hi! my name is: ${this.name}</a></h3>
       <button class='toys' data-id=${this.id} data-action="get-toys">see my toys!</button>
       <h5> i'm ${this.age} years old<br>
         my fur color is: ${this.color}<br>
         and my hair is: ${this.hair} </h5>
+        </div>
     </div>
     `)
   return singlePetHtml
+}
+
+class Toy {
+  constructor(toy){
+    this.id = toy.id
+    this.name = toy.name
+    this.pet_id = toy.pet_id
+  }
+}
+
+Toy.prototype.formatShow = function(){
+  let toyHtml = (`
+      <h3>these are my toys!</h3>
+      <h5>${this.name}</h5>
+    `)
+    return toyHtml
 }
 
 
