@@ -14,13 +14,40 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault()
       const values = $(this).serialize()
       $('#users-container').html('')
-      console.log(values)
+
       $.post('/users', values).done(function(user){
-        console.log(user)
-        window.location.replace(`${user.id}`);
-        return false;
+        $('#new_user').html('')
+        $('.add_user_form').html('')
+        // console.log(user)
+        let singleUser = new User(user)
+        let userHtml = singleUser.formatShow()
+        $('.add_user_form').append(userHtml)
+
+        // console.log(`${user.id}`)
+        // window.location.replace(`${user.id}`);
+        // return false;
         });
       })
+
+
+      class User {
+          constructor(user) {
+              this.id = user.id
+              this.name = user.name
+            }
+          }
+
+          User.prototype.formatShow = function(){
+              let userHtml = (`
+                  <div class='user-new' data-id=${this.id} data-action='user-get'>
+                  <br><br><h3>hi,  ${this.name}</h3><br>
+                  <h5>would you like to adopt a pet?</h5>
+                  <button class='new-pet' data-id=${this.id} data-action="get-pet">click here</button>
+                  </div>
+                  `)
+                  return userHtml
+              }
+
         // console.log("data from api",data)
 
         // $('#users-container').html('')
@@ -40,21 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // userForm.removeChild(newUser)
       // })
 
-    // class User {
-    //   constructor(user) {
-    //     this.id = user.id
-    //     this.name = user.name
-    //   }
-    // }
-    //
-    // User.prototype.formatShow = function(){
-    //   let userHtml = (`
-    //     <div class='user-new' data-id=${this.id}
-    //     data-action='user-get' name=${this.name}>
-    //     </div>
-    //     `)
-    //     return userHtml
-    // }
     //
 
 
