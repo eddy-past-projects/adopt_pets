@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let userHtml = singleUser.formatShow()
         $('.add_user_form').append(userHtml)
 
+
         // console.log(`${user.id}`)
         // window.location.replace(`${user.id}`);
         // return false;

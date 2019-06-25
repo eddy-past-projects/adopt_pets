@@ -15,7 +15,13 @@ function getPets() {
     .then(resp => resp.json())
     .then(pets => {
       $('#pets-container').html('')
-      pets.forEach(pet => {
+
+      let petSort = pets.sort(function(a, b) {
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+      })
+      petSort.forEach(pet => {
         let newPet = new Pet(pet)
         let petHtml = newPet.formatIndex()
         $('#pets-container').append(petHtml)
@@ -28,6 +34,8 @@ function getSinglePet() {
     e.preventDefault()
 
     let petId = e.target.dataset.id
+    let p = 'these are my toys!'
+
 
     if (e.target.dataset.action === 'show-pet') {
     fetch(`/pets/${petId}.json`)
@@ -42,8 +50,7 @@ function getSinglePet() {
       fetch(`/pets/${petId}.json`)
         .then(resp => resp.json())
         .then(petArray => {
-          // $('#pets-container').html('')
-          let p = 'these are my toys!'
+
           $('h3').html('')
           $('.pet-type').html('')
           $('h3').html(p)
