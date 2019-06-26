@@ -37,3 +37,8 @@ then use the compare branch drop-down menu to choose the topic branch you made y
 Type a title and description for your pull request.
 To create a pull request that is ready for review, click Create Pull Request. 
 To create a draft pull request, use the drop-down and select Create Draft Pull Request, then click Draft Pull Request
+
+
+MIT License
+
+Copyright (c) 2019 zoey7117
