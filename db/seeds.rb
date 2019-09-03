@@ -9,10 +9,10 @@ Pet.destroy_all
 User.destroy_all
 Toy.destroy_all
 
-User.create(name: 'cynthia', password: '123')
-User.create(name: 'lani', password: '123')
-User.create(name: 'dale', password: '123')
-User.create(name: 'ive', password: '123')
+User.create(id: 1, name: 'cynthia', password: '123')
+User.create(id: 2, name: 'lani', password: '123')
+User.create(id: 3, name: 'dale', password: '123')
+User.create(id: 4, name: 'ive', password: '123')
 
 
 
