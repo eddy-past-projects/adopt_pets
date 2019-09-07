@@ -8,6 +8,22 @@
   <h4>hi, <%= @user.name %></h4>
 
 
+  <h3>your pets</h3>
+
+  <div id="my-pets">
+    <ul>
+    <li>  <% @user.pets.each do |pet|%>
+
+      name: <%= button_to pet.name, pet_path(pet), method: :get, class: 'button'%>
+      type of pet: <%= pet.kind%><br></li>
 
 
-</div>
+      <% end %>
+
+
+    </ul>
+
+    <%= button_to 'adopt a pet', new_pet_path, method: :get, class: 'button' %><br><br>
+
+    <%= button_to 'sign out', logout_path,  method: :get, data: { confirm: 'are u sure?' }, class: 'button' %><br><br>
+    </div>
