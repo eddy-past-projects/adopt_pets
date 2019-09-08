@@ -31,23 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
       })
 
 
+      // class User {
+      //     constructor(user) {
+      //         this.id = user.id
+      //         this.name = user.name
+      //       }
+      //     }
+
+
       class User {
           constructor(user) {
               this.id = user.id
               this.name = user.name
+              this.user_id = pet.user_id
             }
           }
-
           User.prototype.formatShow = function(){
               let userHtml = (`
                   <div class='user-new' data-id=${this.id} data-action='user-get'>
                   <br><br><h3>hi,  ${this.name}</h3><br>
                   <h5>would you like to adopt a pet?</h5>
                   <button class='new-pet' data-id=${this.id} data-action="get-pet">click here</button>
+                  <div class='user-pets' data-id=${this.pet_id} data-action='user-pets'>
+                  </div>
                   </div>
                   `)
                   return userHtml
               }
+
+
 
         // console.log("data from api",data)
 
