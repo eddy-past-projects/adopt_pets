@@ -1,13 +1,21 @@
 
-  <div class="user-details" data-user-id="<%= @user.id %>">
-
-
-</div>
-<div class="user-pets">
+hi
+<% @user.id %>
+<div class="user-pets-container">
+  <div class='user-show' data-id=@user.id data-action='show-pet'>
 
   <h4>hi, <%= @user.name %></h4>
+  <h4>hi, <%= @user.id %></h4>
+
+
+  <h3>your pets</h3>
 
 
 
 
-</div>
+
+    <%= button_to 'adopt a pet', new_pet_path, method: :get, class: 'button' %><br><br>
+
+    <%= button_to 'sign out', logout_path,  method: :get, data: { confirm: 'are u sure?' }, class: 'button' %><br><br>
+    </div>
+      </div>

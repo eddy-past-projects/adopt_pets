@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
   before_action :set_user, only: [:show, :destroy]
+  helper_method :current_user
 
 
   def new
@@ -11,6 +12,8 @@ class UsersController < ApplicationController
     end
   end
 
+  
+
   def index
     @users = User.all
     respond_to do |f|
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @pet = @user.pets
+    @pet = @user.pets.build
     # @pet = @user.pets.build
     respond_to do |f|
       f.html {render :show}
@@ -39,7 +42,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-  
+
     if(@user.save)
       session[:user_id] = @user.id
       render json: @user

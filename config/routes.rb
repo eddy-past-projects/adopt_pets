@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
 
 
+
+
   patch '/toggle_hunger/:id', to: 'pets#pet_hungry', as: 'pet_hungry'
 
 
