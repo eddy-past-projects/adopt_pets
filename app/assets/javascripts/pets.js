@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-let petsContainer = document.getElementById('pet-container')
+let petsContainer = document.getElementById('pets-container')
 let petUserId
 
 
@@ -22,6 +22,7 @@ function getPets() {
         return 0;
       })
       petSort.forEach(pet => {
+
         let newPet = new Pet(pet)
         let petHtml = newPet.formatIndex()
         $('#pets-container').append(petHtml)

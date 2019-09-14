@@ -3,7 +3,6 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :pet_hungry, :edit, :update, :destroy]
 
 
-
   def new
     @pet = Pet.new
     @users = User.all

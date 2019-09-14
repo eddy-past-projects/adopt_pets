@@ -9,15 +9,21 @@ class SessionsController < ApplicationController
     # // you need to receive user name & password from js
     # // through params
     @user = User.find_by(name: params[:name])
+    # byebug
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       # # // serve up json
-      # render json: @user
-      redirect_to user_path(@user)
+      # respond_to do |f|
+      #   f.html {render :show}
+        # f.json {render json: @user.pets}
+      render json: @user.pets
+      # redirect_to user_path(@user)
+    # end
     else
       flash[:message] = 'Invalid name or password'
       redirect_to login_path
     end
+
   end
 
   def delete
